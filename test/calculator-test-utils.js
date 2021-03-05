@@ -5,7 +5,7 @@ import React from 'react'
 // eslint-disable-next-line import/no-unresolved
 import {dark} from 'themes'
 
-function render(ui, {theme = dark, ...options} = {}) {
+function render(ui, {theme = dark, ...options}) {
   function Wrapper({children}) {
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>
   }
@@ -14,6 +14,5 @@ function render(ui, {theme = dark, ...options} = {}) {
   }
   return  rtlRender(ui, {...options, wrapper: Wrapper})
 }
-export * from '@testing-library/react'
-// override existing render function with our own render
+
 export {render}
