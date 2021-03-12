@@ -20,7 +20,7 @@
     "lint": "jest --config test/jest.lint.js",
     "validate": "npm run test:coverage",
     "postinstall": "cd server && npm install",
-    "netlify": "npm-run-all --parallel test:coverage build && cp -r coverage/lcov-report dist/lcov-report",
+    "netlify": "npm-run-all --parallel test:cove rage build && cp -r coverage/lcov-report dist/lcov-report",
     "setup": "npm install && npm run validate"
   },
   "jest-runner-eslint": {
@@ -43,6 +43,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "css-loader": "^3.2.0",
+    "cypress": "^6.6.0",
     "eslint": "^6.2.2",
     "eslint-config-kentcdodds": "^14.4.0",
     "eslint-import-resolver-jest": "^3.0.0",
@@ -72,6 +73,7 @@
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
     "emotion-theming": "^10.0.14",
+    "eslint-plugin-cypress": "^2.11.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

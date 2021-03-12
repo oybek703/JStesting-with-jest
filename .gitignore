@@ -2,3 +2,6 @@ dist
 node_modules
 coverage
 .idea
+cypress/videos
+cypress/screenshots
+server/node_modules
