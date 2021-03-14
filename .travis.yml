@@ -2,8 +2,9 @@ sudo: false
 language: node_js
 addons:
   apt:
+    update: true
     packages:
-      - libconf-2-4
+      - libgconf-2-4
 cache:
   directories:
     - ~/.npm
@@ -15,4 +16,6 @@ install: echo "install happens as part of setup"
 script: npm run setup
 after_script: npx codecov@3
 branches:
-  only: master
+  only:
+    - master
+    - tjs-master
