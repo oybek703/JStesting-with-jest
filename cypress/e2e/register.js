@@ -4,11 +4,9 @@ describe('registration', () => {
     const user = buildUser()
     cy.visit('/')
     cy.findByText(/register/i).click()
-    cy.findByLabelText(/username/i).type(user.username)
-    cy.findByLabelText(/password/i).type(user.password)
-    cy.findByText(/submit/i).click().url().should('eq', `${Cypress.config().baseUrl}/`)
-    cy.window().its('localStorage.token').should('be.a', 'string')
-    cy.findByTestId('username-display').should('have.text', user.username)
+    cy.submitForm(user)
+    cy.assertHome()
+    cy.assertLoggedInAs(user)
   })
   it('should throw error if there is error while registering', () => {
     cy.server().intercept('POST', 'http:/localhost:3000/register', {

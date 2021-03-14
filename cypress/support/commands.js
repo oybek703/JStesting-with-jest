@@ -24,3 +24,25 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands'
+import {buildUser} from './generate'
+
+Cypress.Commands.add('createUser', (overrides) => {
+  const user  = buildUser()
+  cy.request('POST', 'http://localhost:3000/register', {body: user})
+    .then(response => ({...response.body.user, ...user}))
+})
+
+Cypress.Commands.add('assertHome', () => {
+  cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+})
+
+Cypress.Commands.add('submitForm', user => {
+  cy.findByLabelText(/username/i).type(user.username)
+  cy.findByLabelText(/password/i).type(user.password)
+  cy.findByText(/submit/i).click()
+})
+
+Cypress.Commands.add('assertLoggedInAs', user => {
+  cy.window().its('localStorage.token').should('be.a', 'string')
+  cy.findByTestId('username-display').should('have.text', user.username)
+})
