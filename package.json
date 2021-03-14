@@ -48,7 +48,7 @@
     ]
   },
   "keywords": [],
-  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "author": "Yoriqulov Oybek",
   "license": "GPL-3.0",
   "devDependencies": {
     "@babel/core": "^7.5.5",
